@@ -1,5 +1,12 @@
+/* 
+    Global Styling 
+    -----------------    
+*/
 .App {
   text-align: center;
+  background-color: #2F2F2F;
+  font-family: 'K2D', sans-serif;
+  color:#fff;
 }
 
 .App-logo {
@@ -14,7 +21,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #2F2F2F;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,14 +32,121 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #28CA7C;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input{
+  height: 40px;
+  border:none;
+  width: 80%;
+  margin-left: 15px;
+  background-color:inherit;
+  color:#ffffff;
+}
+input:focus{
+  outline: none;
+  box-shadow: none;
+}
+.Form-control{
+  width:250px;
+  padding: 5px;
+  height: 40px;
+  background-color: #757575;
+  border-radius: 50px;
+  margin:10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+}
+.App-Input{
+  color:#fff;
+}
+/* 
+  Login Screen 
+  ------------------------------
+*/
+.Login-form{
+  width: 350px;
+  height: 300px;
+  flex-shrink: 0;
+  padding: 10px;
+  border-radius:5px;
+  background: #454545;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  font-family: 'K2D', sans-serif;
+  text-align: center;
+  padding-top:80px;
+  
+}
+
+.Login-button{
+
+  width: 250px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #28CA7C;
+  border:0;
+  border-radius: 11px;
+  font-family: 'K2D';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  color: #FFFFFF;
+  margin-top:25px;
+}
+.Login-username{
+  background-image: url('../public/username_ic.png');
+  background-repeat: no-repeat;
+  background-position:right;
+}
+.Login-password{
+  background-image: url('../public/password_ic.png');
+  background-repeat: no-repeat;
+  background-position:right;
+}
+
+/* Components Styles */
+.Brand{
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  color:#FFFFFF;
+
+  padding:0;
+  padding-bottom: 80px;
+  text-align: center;
+  margin-top:80px;
+}
+.Brand-logo{
+  width:75px;
+  height: 75px;
+  float:left;
+  
+
+}
+.Brand-title{
+  font-size:25px;
+  padding-top:0%;
+  text-align: left;
+  float:left;
+}
+
+.Register-Info-text{
+  color: #fff;
+  font-family: 'K2D';
+  width: inherit;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+}
+.Register-Info-text-blue{
+  color:#3D95B1;
+  font-weight: 700;
+
 }
