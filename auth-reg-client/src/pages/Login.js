@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Brand from '../components/Brand';
+import axios from "axios";
 import RegisterInfo from '../components/RegisterInfo';
 
 function Login(){
@@ -7,7 +8,7 @@ function Login(){
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
-
+    
    
     /*Action*/
     const handleSubmit =  async e=> {
@@ -48,16 +49,16 @@ function Login(){
 
 async function loginUser(credentials){
     
-
-    return fetch(process.env.REACT_APP_BACKEND +'/login', {
-        method: 'POST',
-        headers: {
-            
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(credentials)
-      })
-        .then(data => data.json())
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+    }
+    return axios.post(process.env.REACT_APP_BACKEND + '/login/',{
+        data: JSON.stringify(credentials)
+    },
+    {headers:headers}).then(data =>console.log(data.json()))
+      .catch(err=>console.log(err));
+    
 }
 
 
