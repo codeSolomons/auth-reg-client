@@ -1,11 +1,12 @@
+// import { Link } from "react-router-dom";
 import csIcon from "../Images/csIcon.png";
 
 import "../styles/Splash.css";
 
 function Splash() {
-    const handleSubmit = () => {
-      // YET TO IMPLEMENT
-    };
+  const handleSubmit = () => {
+    // YET TO IMPLEMENT
+  };
 
   return (
     <div className="splash-container">
@@ -19,13 +20,15 @@ function Splash() {
         </div>
       </div>
       <div className="splash-actions">
-        <input
-          type="button"
-          name="splash-action"
-          className="splash-button"
-          value="LET'S GO"
-          onClick={handleSubmit}
-        />
+        {/* <Link to="/login"> */}
+          <input
+            type="button"
+            name="splash-action"
+            className="splash-button"
+            value="LET'S GO"
+            onClick={handleSubmit}
+          />
+        {/* </Link> */}
       </div>
     </div>
   );
