@@ -61,6 +61,12 @@ input:focus{
 .App-Input{
   color:#fff;
 }
+
+/* placeholder not showing in chrome for some odd reason so here it is */
+.Form-control input::placeholder {
+  color: #ffffff;
+}
+
 /* 
   Login Screen 
   ------------------------------
