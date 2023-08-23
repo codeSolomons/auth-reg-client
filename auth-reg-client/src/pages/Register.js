@@ -1,10 +1,12 @@
 import Brand from "../components/Brand";
 import LoginInfo from "../components/LoginInfo";
 import { registerUser } from "../services/AuthService";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/Register.css";
 
 function Register() {
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -12,7 +14,7 @@ function Register() {
 
     registerUser(regData).then((res) => {
       console.log(res);
-      // redirect to dashboard here
+      navigate("/login");
     });
   };
 
