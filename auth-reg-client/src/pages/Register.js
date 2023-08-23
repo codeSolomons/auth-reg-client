@@ -12,10 +12,15 @@ function Register() {
     const formData = new FormData(e.target);
     const regData = Object.fromEntries(formData);
 
-    registerUser(regData).then((res) => {
-      console.log(res);
-      navigate("/login");
-    });
+    registerUser(regData)
+      .then((res) => {
+        // console.log(res);
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log("Registration failed");
+        console.error(error);
+      });
   };
 
   return (
