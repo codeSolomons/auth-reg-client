@@ -1,18 +1,19 @@
-import { useState } from "react";
 import Brand from "../components/Brand";
 import LoginInfo from "../components/LoginInfo";
+import { registerUser } from "../services/AuthService";
 
 import "../styles/Register.css";
 
 function Register() {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [email, setEmail] = useState();
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const regData = Object.fromEntries(formData);
 
-  const handleSubmit = () => {
-    // YET TO IMPLEMENT
+    registerUser(regData).then((res) => {
+      console.log(res);
+      // redirect to dashboard here
+    });
   };
 
   return (
@@ -24,9 +25,8 @@ function Register() {
             <input
               className="App-Input"
               type="text"
-              name="firstName"
+              name="first_name"
               placeholder="First Name"
-              onChange={(e) => setFirstName(e.target.value)}
               required
             />
           </div>
@@ -34,9 +34,8 @@ function Register() {
             <input
               className="App-Input"
               type="text"
-              name="lastName"
+              name="last_name"
               placeholder="Last Name"
-              onChange={(e) => setLastName(e.target.value)}
               required
             />
           </div>
@@ -46,7 +45,6 @@ function Register() {
               type="email"
               name="email"
               placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -56,7 +54,6 @@ function Register() {
               type="text"
               name="username"
               placeholder="Username"
-              onChange={(e) => setUsername(e.target.value)}
               required
             />
           </div>
@@ -66,7 +63,6 @@ function Register() {
               type="password"
               name="password"
               placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
