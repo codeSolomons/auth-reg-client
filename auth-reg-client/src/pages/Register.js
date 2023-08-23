@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Brand from "../components/Brand";
 import LoginInfo from "../components/LoginInfo";
+
 import "../styles/Register.css";
 
 function Register() {
@@ -18,59 +19,65 @@ function Register() {
     <div className="register-container">
       <Brand />
       <div className="register-form">
-        <div className="Form-control">
+        <form onSubmit={handleSubmit}>
+          <div className="Form-control">
+            <input
+              className="App-Input"
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="Form-control">
+            <input
+              className="App-Input"
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="Form-control">
+            <input
+              className="App-Input register-email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="Form-control">
+            <input
+              className="App-Input register-username"
+              type="text"
+              name="username"
+              placeholder="Username"
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="Form-control">
+            <input
+              className="App-Input register-password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
           <input
-            className="App-Input"
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            onChange={(e) => setFirstName(e.target.value)}
+            type="submit"
+            name="Register"
+            className="register-button"
+            value="Create Account"
           />
-        </div>
-        <div className="Form-control">
-          <input
-            className="App-Input"
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-        <div className="Form-control">
-          <input
-            className="App-Input register-email"
-            type="text"
-            name="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="Form-control">
-          <input
-            className="App-Input register-username"
-            type="text"
-            name="username"
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="Form-control">
-          <input
-            className="App-Input register-password"
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <input
-          type="button"
-          name="Register"
-          className="register-button"
-          value="Create Account"
-          onClick={handleSubmit}
-        />
-        <LoginInfo />
+          <LoginInfo />
+        </form>
       </div>
     </div>
   );
