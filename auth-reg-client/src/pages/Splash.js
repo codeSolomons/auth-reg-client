@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import csIcon from "../Images/csIcon.png";
 
 import "../styles/Splash.css";
@@ -20,7 +20,7 @@ function Splash() {
         </div>
       </div>
       <div className="splash-actions">
-        {/* <Link to="/login"> */}
+        <Link to="/register">
           <input
             type="button"
             name="splash-action"
@@ -28,7 +28,7 @@ function Splash() {
             value="LET'S GO"
             onClick={handleSubmit}
           />
-        {/* </Link> */}
+        </Link>
       </div>
     </div>
   );
