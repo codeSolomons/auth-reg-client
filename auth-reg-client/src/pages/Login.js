@@ -1,27 +1,69 @@
 import { useState } from 'react';
 import Brand from '../components/Brand';
+import Alert from '../components/Alert';
 import axios from "axios";
 import RegisterInfo from '../components/RegisterInfo';
+
+
+
+
 
 function Login(){
     
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
-
+    const [callSuccess, setCallSuccess] = useState(false);
+    const [error,setError] = useState();
+    
+    
     
    
     /*Action*/
     const handleSubmit =  async e=> {
 
         e.preventDefault();
-        const response = await loginUser({
-            username,
-            password
-        });
-        //Examine response
-        console.log(response);
+        //Call API : /login
+        let credentials = {
+            "username":username,
+            "password":password
+        }
+        const headers = {
+            'Content-Type': 'application/json'   
+        }
+        axios.post(process.env.REACT_APP_BACKEND + '/login/',{
+            data: JSON.stringify(credentials)
+        },
+        {headers:headers})
+        .then(response =>{
+            //TO DO: Create user session/cookie
+            setCallSuccess(true);
+        })
+        .catch(err=>{
+            if(err.response){
+                if(err.response.status == 401 ){
+                    setError(err.response.data.message)
+                }
+            }
+            else if(err.request){
+                setError("Request failed")
+                console.log("Request error : " + err.message);
+            }
+            else{
+                setError("Something happened")
+                console.log("Error Something else");
+            }
+            
+        }
+            
+            
+        );
+        
+        
+       
 
     };
+
+   
 
     /*View*/
     return(
@@ -41,24 +83,11 @@ function Login(){
             <RegisterInfo/>
         </div>
         
+        { !callSuccess ? <Alert error="true" message={error} /> : "Success!" }
         
         </>
         
     );
-}
-
-async function loginUser(credentials){
-    
-    const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-    }
-    return axios.post(process.env.REACT_APP_BACKEND + '/login/',{
-        data: JSON.stringify(credentials)
-    },
-    {headers:headers}).then(data =>console.log(data.json()))
-      .catch(err=>console.log(err));
-    
 }
 
 
