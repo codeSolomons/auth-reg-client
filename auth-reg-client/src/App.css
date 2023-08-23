@@ -156,3 +156,31 @@ input:focus{
   font-weight: 700;
 
 }
+
+.alert-info{
+  width:350px;
+  height: auto;
+  padding:15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top:20px;
+  border-radius: 5px;
+  border: 1px solid #53bfed;
+  background: rgba(117, 252, 254, 0.6);
+
+}
+.alert-error{
+  width:350px;
+  height: auto;
+  padding:15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top:20px;
+  border-radius: 5px;
+  border: 1px solid #ED5953;
+  background: rgba(254, 123, 117, 0.60);
+}
+
+.alert-text{
+  color:#ffffff;
+}
