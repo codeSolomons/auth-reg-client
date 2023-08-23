@@ -1,0 +1,44 @@
+.register-form {
+    width: 350px;
+    height: 470px;
+    flex-shrink: 0;
+    padding: 10px;
+    border-radius: 5px;
+    background: #454545;
+    margin: 20px auto 0;
+    font-family: 'K2D', sans-serif;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.register-username,
+.register-password,
+.register-email {
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.register-username {
+    background-image: url('../../public/username_ic.svg');
+}
+
+.register-password {
+    background-image: url('../../public/password_ic.svg');
+}
+
+.register-email {
+    background-image: url('../../public/email_ic.svg');
+}
+
+.register-button {
+    width: 250px;
+    height: 50px;
+    margin: 25px auto 0;
+    background: #3D95B1;
+    border: 0;
+    border-radius: 11px;
+    font-family: 'K2D';
+    font-weight: 700;
+    font-size: 17px;
+    color: #FFFFFF;
+}
