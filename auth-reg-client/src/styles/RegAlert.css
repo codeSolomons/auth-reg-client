@@ -1,0 +1,16 @@
+.reg-alert-error {
+    max-width: 350px; 
+    width: 100%; 
+    padding: 15px;
+    margin: 20px auto; 
+    border-radius: 5px;
+    border: 1px solid #ED5953;
+    background: rgba(254, 123, 117, 0.60);
+    text-align: center;
+    box-sizing: border-box; 
+    overflow: hidden; 
+}
+
+.reg-alert-text {
+    color: #ffffff;
+}
