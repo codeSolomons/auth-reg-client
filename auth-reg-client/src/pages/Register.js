@@ -18,7 +18,7 @@ function Register() {
     setUsernameError(null);
     setEmailError(null);
     setError(null);
-    
+
     e.preventDefault();
     const formData = new FormData(e.target);
     const regData = Object.fromEntries(formData);
@@ -26,18 +26,20 @@ function Register() {
     try {
       await registerUser(regData);
       setCallSuccess(true);
-      navigate("/login");
+      navigate("/login?success=true");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setCallSuccess(false);
       if (error.response) {
         if (error.response.status === 409) {
           if (error.response.data.username !== undefined) {
             setUsernameError(error.response.data.username[0]);
+            console.log(error.response.data.username[0]);
           }
 
           if (error.response.data.email !== undefined) {
             setEmailError(error.response.data.email[0]);
+            console.log(error.response.data.email[0]);
           }
         }
       } else if (error.request) {
@@ -48,10 +50,6 @@ function Register() {
         console.log("Error Something else");
       }
     }
-
-    
-    console.log(usernameError);
-    console.log(emailError);
   };
 
   return (

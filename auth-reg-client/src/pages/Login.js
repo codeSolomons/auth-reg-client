@@ -2,6 +2,7 @@ import { useState } from "react";
 import Brand from "../components/Brand";
 import Alert from "../components/Alert";
 import { loginUser } from "../services/AuthService";
+import { useLocation } from "react-router-dom";
 import RegisterInfo from "../components/RegisterInfo";
 
 function Login() {
@@ -9,6 +10,10 @@ function Login() {
   const [password, setPassword] = useState();
   const [callSuccess, setCallSuccess] = useState(false);
   const [error, setError] = useState();
+
+  const location = useLocation();
+
+  const success = new URLSearchParams(location.search).get("success");
 
   /*Action*/
   const handleSubmit = async (e) => {
@@ -74,6 +79,8 @@ function Login() {
       </div>
 
       {!callSuccess ? <Alert error="true" message={error} /> : "Success!"}
+
+      {success && !callSuccess ? "Registration successful!" : ""}
     </>
   );
 }
