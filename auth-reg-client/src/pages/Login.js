@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Brand from "../components/Brand";
 import Alert from "../components/Alert";
-import axios from "axios";
+import { loginUser } from "../services/AuthService";
 import RegisterInfo from "../components/RegisterInfo";
 
 function Login() {
@@ -14,24 +14,14 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     //Call API : /login
-    let credentials = {
+    const credentials = {
       username: username,
       password: password,
     };
-    const headers = {
-      "Content-Type": "application/json",
-    };
-    axios
-      .post(
-        process.env.REACT_APP_BACKEND + "/login/",
-        {
-          data: JSON.stringify(credentials),
-        },
-        { headers: headers }
-      )
+
+    loginUser(credentials)
       .then((response) => {
         //TO DO: Create user session/cookie
-        console.log(response);
         setCallSuccess(true);
       })
       .catch((err) => {

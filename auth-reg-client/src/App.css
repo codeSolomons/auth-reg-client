@@ -102,6 +102,7 @@ input:focus{
   font-size: 17px;
   color: #FFFFFF;
   margin-top:25px;
+  cursor: pointer;
 }
 .Login-username{
   background-image: url('../public/username_ic.png');
@@ -183,4 +184,8 @@ input:focus{
 
 .alert-text{
   color:#ffffff;
+}
+
+a {
+  text-decoration: none;
 }
