@@ -1,26 +1,57 @@
-import Brand from "../components/Brand";
-import LoginInfo from "../components/LoginInfo";
+import { useState } from "react";
 import { registerUser } from "../services/AuthService";
 import { useNavigate } from "react-router-dom";
+import Brand from "../components/Brand";
+import LoginInfo from "../components/LoginInfo";
+import RegAlert from "../components/RegAlert";
 
 import "../styles/Register.css";
 
 function Register() {
+  const [callSuccess, setCallSuccess] = useState(false);
+  const [usernameError, setUsernameError] = useState();
+  const [emailError, setEmailError] = useState();
+  const [error, setError] = useState();
+
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setUsernameError(null);
+    setEmailError(null);
+    setError(null);
+    
     e.preventDefault();
     const formData = new FormData(e.target);
     const regData = Object.fromEntries(formData);
 
-    registerUser(regData)
-      .then((res) => {
-        // console.log(res);
-        navigate("/login");
-      })
-      .catch((error) => {
-        console.log("Registration failed");
-        console.error(error);
-      });
+    try {
+      await registerUser(regData);
+      setCallSuccess(true);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+      setCallSuccess(false);
+      if (error.response) {
+        if (error.response.status === 409) {
+          if (error.response.data.username !== undefined) {
+            setUsernameError(error.response.data.username[0]);
+          }
+
+          if (error.response.data.email !== undefined) {
+            setEmailError(error.response.data.email[0]);
+          }
+        }
+      } else if (error.request) {
+        setError("Request failed");
+        console.log("Request error : " + error.message);
+      } else {
+        setError("Something happened");
+        console.log("Error Something else");
+      }
+    }
+
+    
+    console.log(usernameError);
+    console.log(emailError);
   };
 
   return (
@@ -81,6 +112,16 @@ function Register() {
           />
           <LoginInfo />
         </form>
+
+        {callSuccess ? (
+          "Success!"
+        ) : (
+          <RegAlert
+            errorMessage={error}
+            usernameErrorMessage={usernameError}
+            emailErrorMessage={emailError}
+          />
+        )}
       </div>
     </div>
   );
