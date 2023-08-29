@@ -2,19 +2,29 @@ import { useState } from "react";
 import Brand from "../components/Brand";
 import Alert from "../components/Alert";
 import { loginUser } from "../services/AuthService";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import RegisterInfo from "../components/RegisterInfo";
 
+
+
 function Login() {
+  
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [callSuccess, setCallSuccess] = useState(false);
   const [error, setError] = useState();
+ 
 
   const location = useLocation();
-
+  const nav = useNavigate();
   const success = new URLSearchParams(location.search).get("success");
 
+
+
+
+
+  
+  
   /*Action*/
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,10 +34,17 @@ function Login() {
       password: password,
     };
 
-    loginUser(credentials)
+    await loginUser(credentials)
       .then((response) => {
+        console.log(response);
         //TO DO: Create user session/cookie
         setCallSuccess(true);
+        //Create user session
+       
+        localStorage.setItem('token',response.token.access);
+        nav("/dashboard");
+
+
       })
       .catch((err) => {
         if (err.response) {
@@ -42,6 +59,8 @@ function Login() {
           console.log("Error Something else");
         }
       });
+
+      
   };
 
   /*View*/
