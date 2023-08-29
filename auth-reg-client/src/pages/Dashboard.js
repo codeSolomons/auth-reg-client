@@ -43,6 +43,12 @@ function Dashboard(){
     
     profileFetch();
     
+    function Logout(){
+        
+ 
+        nav('/login');
+
+    }
     
     return(
 
@@ -57,7 +63,12 @@ function Dashboard(){
                 </div>
                 <div className="logout-container">
                     <div className="greetings-text">Welcome, <spane className="greetings-name">{name}</spane></div>
-                    <button className="logout-button">Logout</button>
+                    <input
+          type="button"
+          className="logout-button"
+          value="Logout"
+          onClick={Logout}
+        />
                 </div>
             </div>
             
