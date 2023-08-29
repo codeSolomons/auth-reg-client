@@ -1,6 +1,6 @@
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { profileUser } from "../services/AuthService";
 import  '../styles/Dashboard.css';
 import csIcon from '../Images/csIcon.png';
@@ -10,20 +10,29 @@ import { useNavigate } from "react-router-dom";
 
 function Dashboard(){
 
-    const nav = useNavigate();
+    
 
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [username, setUsername] = useState();
     
+    const Nav = useNavigate();
 
     //retrieve token from local storage
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');  
+
+    useEffect(()=>{
+
+        //if token does not exists
+        if(token == null){
+            Nav("/login");
+        }
+       
+    },[]);
+
+
+
     
-    //if token does not exists
-    if(token == null){
-        nav('/login');
-    }
     
     let data={
         "token":token
@@ -38,6 +47,7 @@ function Dashboard(){
             setUsername(response.user_profile.username);
         }).catch((err)=>{
             console.log(err);
+            Nav('/login');
         });
 
     }
@@ -45,9 +55,11 @@ function Dashboard(){
     profileFetch();
     
     function Logout(){
+        
         localStorage.clear();
-        nav('/login');
+        Nav('/login');
     }
+    
     
     return(
 

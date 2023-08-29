@@ -50,6 +50,7 @@ function Login() {
         if (err.response) {
           if (err.response.status === 401) {
             setError(err.response.data.message);
+            console.log(err);
           }
         } else if (err.request) {
           setError("Request failed");
