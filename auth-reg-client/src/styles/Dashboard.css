@@ -103,7 +103,7 @@
     line-height: normal;
 }
 .logout-container{
-    width: 323px;
+    width: 400px;
     height: 53px;
     flex-shrink: 0;
     float:right;
@@ -138,6 +138,8 @@ color:#575757;
 border-radius: 10px;
 float:left;
 margin-top:-10px;
+
+margin-left:10px;
 
 }
 

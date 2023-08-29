@@ -13,7 +13,7 @@ function Login() {
   const [password, setPassword] = useState();
   const [callSuccess, setCallSuccess] = useState(false);
   const [error, setError] = useState();
- 
+  
 
   const location = useLocation();
   const nav = useNavigate();
@@ -50,6 +50,7 @@ function Login() {
         if (err.response) {
           if (err.response.status === 401) {
             setError(err.response.data.message);
+            console.log(err);
           }
         } else if (err.request) {
           setError("Request failed");
