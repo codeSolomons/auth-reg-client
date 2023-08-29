@@ -15,6 +15,7 @@ function Dashboard(){
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [username, setUsername] = useState();
+    
 
     //retrieve token from local storage
     const token = localStorage.getItem('token');
@@ -44,10 +45,8 @@ function Dashboard(){
     profileFetch();
     
     function Logout(){
-        
- 
+        localStorage.clear();
         nav('/login');
-
     }
     
     return(
