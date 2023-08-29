@@ -20,3 +20,13 @@ export function loginUser(data) {
     })
     .then((response) => response.data);
 }
+
+export function profileUser(data){
+  
+  return axios
+  .get(process.env.REACT_APP_BACKEND + "/profile/", {
+    headers:{
+      'Authorization':'Bearer '+data.token
+    }
+  }).then((response)=>response.data);
+}
