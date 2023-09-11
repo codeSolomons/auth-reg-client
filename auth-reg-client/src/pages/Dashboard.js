@@ -42,7 +42,7 @@ function Dashboard(){
         await profileUser(data)
         .then((response)=>{
             console.log(response);
-            setName(response.user_profile.first_name +' '+ response.user_profile.last_name);
+            setName(response.user_profile.xfirst_name +' '+ response.user_profile.last_name);
             setEmail(response.user_profile.email);
             setUsername(response.user_profile.username);
         }).catch((err)=>{
