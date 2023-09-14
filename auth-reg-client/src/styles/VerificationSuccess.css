@@ -1,0 +1,19 @@
+.successContainer{
+    width:700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10%;
+
+}
+.imageIcon{
+    
+    height: 100px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.success-logo{
+
+    width: 100px;
+    height: auto;
+}

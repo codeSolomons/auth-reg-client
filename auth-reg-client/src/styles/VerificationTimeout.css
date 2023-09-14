@@ -1,0 +1,22 @@
+.timeoutContainer{
+    width:700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:10%;
+
+}
+.timeoutContainer .title h1{
+    color: #ED5953;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.resendLink-button{
+    border-radius: 5px;
+    background: #3D95B1;
+    width: 143px;
+    height: 40px;
+    flex-shrink: 0;
+    margin:20px;
+}

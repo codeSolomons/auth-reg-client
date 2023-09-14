@@ -1,0 +1,24 @@
+.verification-notify{
+    width:600px;
+    margin-top:10%;
+    margin-left:auto;
+    margin-right: auto;
+    
+}
+.verification-notify .title h1{
+    font-size:45px;
+    color:#28CA7C;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    font-family: Inter;
+}
+.verification-notify .info{
+    color:#fff;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: Inter;
+}
