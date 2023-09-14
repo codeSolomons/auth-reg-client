@@ -1,0 +1,27 @@
+.profile-menu{
+    width:250px;
+    height: auto;
+    padding:20px;
+    background-color: #fff;
+    border-radius: 10px;
+    color:black;
+    float:right;
+    margin-right: 5%;
+    margin-top:4%;
+    text-align: left;
+}
+ .menu{
+    text-decoration: none;
+    list-style: none;
+}
+.profile-menu .element{
+    font-size:20px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    font-style: normal;
+    font-weight: 500;
+}
+.element:hover{
+    color:#28CA7C;
+    cursor:pointer;
+}

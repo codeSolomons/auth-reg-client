@@ -6,7 +6,6 @@ function Brand(){
         <div className="Brand">
             <img className='Brand-logo' alt="codeSolomons" src={ csIcon }/>
             <h2 className='Brand-title'>Auth-Reg</h2>
-
         </div>
 
     );
