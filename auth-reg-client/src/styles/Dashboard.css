@@ -142,4 +142,13 @@ margin-top:-10px;
 margin-left:10px;
 
 }
+.avatar{
+    width: 62px;
+    height: 62px;
+    flex-shrink: 0;
+    margin-top:-25px;
+}
+.avatar:hover{
+    cursor:pointer;
+}
 

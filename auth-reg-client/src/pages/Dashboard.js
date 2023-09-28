@@ -3,10 +3,15 @@
 import { useEffect, useState } from "react";
 import { profileUser } from "../services/AuthService";
 import  '../styles/Dashboard.css';
+import '../styles/ProfileMenu.css';
+import '../styles/UpdatePasswordForm.css';
 import csIcon from '../Images/csIcon.png';
-import womanIcon from '../Images/woman 1.png';
+
+import userIcon from '../Images/avatar_ic.png';
 import { useNavigate } from "react-router-dom";
 
+import UserProfile from "../components/UserProfile";
+import UpdatePasswordForm from "../components/UpdatePasswordForm";
 
 function Dashboard(){
 
@@ -15,6 +20,8 @@ function Dashboard(){
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [username, setUsername] = useState();
+    const [profileMenuDisplay, setProfileMenuDisplay] = useState(false);
+    const [changePasswordComponentDisplay, setchangePasswordComponentDisplay] = useState(false);
     
     const Nav = useNavigate();
 
@@ -31,9 +38,22 @@ function Dashboard(){
     },[]);
 
 
-
+    function profileMenuToggle(){
+        if(!profileMenuDisplay){
+            setProfileMenuDisplay(true)
+        }else{
+            setProfileMenuDisplay(false)
+        }
+    }
     
-    
+    function changePasswordComponentToggle(){
+        if(!changePasswordComponentDisplay){
+            setchangePasswordComponentDisplay(true)
+        }
+        else{
+            setchangePasswordComponentDisplay(false)
+        }
+    }
     let data={
         "token":token
     }
@@ -42,7 +62,7 @@ function Dashboard(){
         await profileUser(data)
         .then((response)=>{
             console.log(response);
-            setName(response.user_profile.first_name +' '+ response.user_profile.last_name);
+            setName(response.user_profile.xfirst_name +' '+ response.user_profile.last_name);
             setEmail(response.user_profile.email);
             setUsername(response.user_profile.username);
         }).catch((err)=>{
@@ -54,12 +74,12 @@ function Dashboard(){
     
     profileFetch();
     
+    
     function Logout(){
         
         localStorage.clear();
         Nav('/login');
     }
-    
     
     return(
 
@@ -74,26 +94,36 @@ function Dashboard(){
                 </div>
                 <div className="logout-container">
                     <div className="greetings-text">Welcome, <spane className="greetings-name">{name}</spane></div>
-                    <input
-          type="button"
-          className="logout-button"
-          value="Logout"
-          onClick={Logout}
-        />
+                    <div className="user-avatar"  onClick={profileMenuToggle}  >
+                        <img className="avatar" alt="user" src={userIcon} />
+                    </div>
+
+                    {profileMenuDisplay? 
+                    
+                        <div className="profile-menu" >
+                            <ul className="menu">
+                               <li className="element" onClick={Logout}>Logout</li>
+                               <li className="element" onClick={changePasswordComponentToggle}>Change password</li>
+                            </ul>   
+                        </div>
+                    
+                    : ""
+                    }
+                    
+                                        
                 </div>
             </div>
             
-            <div className="welcome-text">
-                <div className="work-text">Work</div>
-                <div className="brilliant-text">brilliant</div>
-            </div>
-
-            <div className="user-profile">
-                <img src={womanIcon} alt="profile"/>
-                <div className="user-name">{name}</div>
-                <div className="user-email">{email}</div>
-                <div className="user-username">{username}</div>
-            </div>
+            {changePasswordComponentDisplay?
+                <UpdatePasswordForm></UpdatePasswordForm>
+                :
+                <UserProfile 
+                    name={name} 
+                    email={email} 
+                    username={username} >
+                </UserProfile>
+            }
+            
 
 
 
